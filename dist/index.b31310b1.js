@@ -455,30 +455,129 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"4aleK":[function(require,module,exports) {
+var _header = require("./components/header");
+var _textField = require("./components/text-field");
 (function main() {
-    class Bryan extends HTMLElement {
+    _header.init();
+    _textField.init();
+})(); // class Bryan extends HTMLElement {
+ //   // shadowRoot dentro de SHADOW par apóder ser ultilizado como una variable
+ //   shadow: ShadowRoot;
+ //   constructor() {
+ //     super();
+ //     this.shadow = this.attachShadow({ mode: "open" });
+ //     this.render();
+ //   }
+ //   render() {
+ //     const textoOriginal = this.textContent;
+ //     console.log(textoOriginal);
+ //     const style = document.createElement("style");
+ //     style.textContent = `
+ //     .router{
+ //       border: 5px black  solid ;
+ //       margin: 10px
+ //     }
+ //     `;
+ //     const divisor = document.createElement("div");
+ //     divisor.className = "router";
+ //     divisor.textContent = "holaaa " + textoOriginal;
+ //     const colorojo = this.getAttribute("type");
+ //     if (colorojo == "rojo") {
+ //       divisor.style.color = "red";
+ //     } else {
+ //       divisor.style.color = "blue";
+ //     }
+ //     if (this.children[0]) {
+ //       divisor.appendChild(this.children[0]);
+ //     }
+ //     this.shadow.appendChild(divisor);
+ //     this.shadow.appendChild(style);
+ //   }
+ // }
+ // customElements.define("bryan-el", Bryan);
+
+},{"./components/header":"1WBLn","./components/text-field":"l7C0L"}],"1WBLn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "init", ()=>init
+);
+function init() {
+    class Header extends HTMLElement {
         constructor(){
             super();
             this.render();
         }
         render() {
-            const textoOriginal = this.textContent;
-            console.log(textoOriginal);
-            var style = document.createElement("style");
-            style.textContent = `\n      .root{\n        border: solid 2px red;\n      }\n      `;
-            var shadow = this.attachShadow({
+            this.innerText = "Header";
+            this.style.background = "#FF8282";
+            this.style.width = "340px";
+            this.style.height = "60px";
+            this.style.justifyContent = "center";
+            this.style.display = "flex";
+            this.style.alignItems = "center";
+            this.style.fontSize = "20px";
+        }
+    }
+    customElements.define("custom-header", Header);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"JacNc":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"l7C0L":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "init", ()=>init
+);
+function init() {
+    class Text1 extends HTMLElement {
+        constructor(){
+            super();
+            this.render();
+        }
+        render() {
+            const shadow = this.attachShadow({
                 mode: "open"
             });
-            shadow.appendChild(style);
+            const label = this.getAttribute("label");
             const div = document.createElement("div");
             div.className = "root";
-            div.textContent = "que onda por aca";
+            div.innerHTML = `\n      <label class="label">${label}</label>\n      <input type="text" placeholder="ingrese su  ${label}" />\n      \n      `;
             shadow.appendChild(div);
         }
     }
-    customElements.define("bryan-el", Bryan);
-})();
+    customElements.define("textito-el", Text1);
+}
 
-},{}]},["8uBhv","4aleK"], "4aleK", "parcelRequire54d0")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["8uBhv","4aleK"], "4aleK", "parcelRequire54d0")
 
 //# sourceMappingURL=index.b31310b1.js.map
